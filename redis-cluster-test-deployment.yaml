@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-cluster-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-cluster-test
+  template:
+    metadata:
+      labels:
+        app: redis-cluster-test
+    spec:
+      containers:
+      - name: redis-cluster-test
+        image: praveenb98/redis-cluster-test:latest # Your Docker image
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "1000m"
+            memory: "512Mi"
+          requests:
+            cpu: "500m"
+            memory: "256Mi"
+            
